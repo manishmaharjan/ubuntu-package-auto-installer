@@ -6,16 +6,16 @@
 #Update the package index:
 # sudo apt-get update
 
-# Install devscripts for use to check various repositories and all. For example.  rmadison dolphin
+echo "Installing devscripts for checking various repositories information and all. For example.  rmadison dolphin"
 sudo apt install devscripts
 
-# ebook reader lik epub
+echo "Installing  ebook reader.."
 sudo apt-get install fbreader -y
 
-# Install default java gre
+echo "Installing default java gre.."
 sudo apt-get -y install default-jre
 
-#Gpart
+echo "Installing gparted.."
 sudo apt-get install gparted -y
 
 #Install elementary tweaks
@@ -48,7 +48,7 @@ sudo apt-get install gparted -y
 #sudo apt install indicator-application wingpanel-indicator-ayatana
 #sudo service lightdm restart
 
-# Install git
+echo "Installing git.."
 sudo apt install git -y
 
 # wingpanel monitor
@@ -75,23 +75,23 @@ sudo apt install git -y
 # sudo apt-get update
 # sudo apt-get install terminology -y
 
-# install vnstat for network monitoring
+echo "installing vnstat for network monitoring.."
 sudo apt install vnstat -y
 
-# install another iftop for displaying network bandwidth
+echo "installing another iftop for displaying network bandwidth"
 sudo apt install iftop -y
 
-# Install kodi
+echo "Installing kodi.."
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:team-xbmc/ppa -y
 sudo apt-get update
 sudo apt-get install kodi -y
 
-# install gimp and installable package for image scanner
+echo "installing gimp and installable package for image scanner.."
 sudo apt-get install gimp -y
 sudo apt install xsane -y
 
-# install hp printer driver from the repositories
+echo "installing HP printer driver from the repositories.."
 sudo apt-get purge hplip -y
 sudo apt-get install hplip python3-pyqt5 -y
 #then run
@@ -100,44 +100,45 @@ sudo apt-get install hplip python3-pyqt5 -y
 # install gnome system monitor
 # sudo apt install gnome-system-monitor -y
 
-# Install Synaptic for checking more detail information about packages and dependencies
+echo "Installing Synaptic for checking more detail information about packages and dependencies.."
 sudo apt install synaptic  -y
 
-# install net tools for running command like netstat etc.
+echo "installing net tools for running command like netstat etc.."
 sudo apt install net-tools -y
 
-#  for handling drive mounting https://elementaryos.stackexchange.com/questions/215/how-to-setup-your-ntfs-drives-partitions-to-mount-on-elementary-os-startup
-sudo apt-get install gnome-disk-utility -y # -> for managing the disk and utilities
+#for handling drive mounting https://elementaryos.stackexchange.com/questions/215/how-to-setup-your-ntfs-drives-partitions-to-mount-on-elementary-os-startup
+echo "installing gnome disk utility for managing the disk and utilities.."
+sudo apt-get install gnome-disk-utility -y
 
-# mediainfo for checking duration of a media and other information
-# mediainfo something.mp4 --Output="General;%Duration/String2%" input
+echo "installing mediainfo for checking duration of a media and other information.."
+# usage: mediainfo something.mp4 --Output="General;%Duration/String2%" input
 sudo apt install mediainfo mediainfo-gui -y
 
 # install thunderbird . Install plugins (Tbsync, 'Provider for exchange activesync, provider for caldav & carddav', lightning, deepdark )
 # Tricks (configeditor: mailnews.default_sort_order-> 2, mailnews.default_news_sort_order-> 2)
 # sudo apt-get install thunderbird -y
 
-# To install brave browser
+echo "Installing brave browser.."
 sudo apt install apt-transport-https curl -y
 curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
 echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 sudo apt update
 sudo apt install brave-browser -y
 
-# install eye care
+echo "installing eye care for easy break.."
 sudo add-apt-repository ppa:slgobinath/safeeyes -y
 sudo apt update
 sudo apt install safeeyes -y
 
-# Install application for fast search by reindexing everything in a central db and searching it from there
+echo "Installing mlocate application for fast searching by reindexing everything in a central db and searching it from there.."
 sudo apt install mlocate -y
-#&& sudo updatedb
+sudo updatedb
 
 # THIS HAS BEEN REPLACED WITH SNAPSTORE
 # Install docker
 # sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common docker-ce docker-ce-cli containerd.io -y
 
-# sudo install python3 pip
+echo "installing python..."
 sudo apt install python3-pip -y
 
 # THIS IS REPLACED FROM SNAPSTORE
@@ -146,22 +147,21 @@ sudo apt install python3-pip -y
 #echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 #sudo apt-get update && sudo apt-get install sublime-text
 
-# install whois for checking ipfrom terminal
+echo "installing whois for checking IPs and other information from terminal.."
 sudo apt install whois -y
 
 ################# Snap store applicaitons installation started ##########
 echo "Starting applications installation from snap store....."
 
-#install tux as a default evernotes viewer
+echo "installing tux as a default evernotes viewer"
 sudo snap install tusk
 
-# install android studio
+# echo "installing android studio.."
 #sudo apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
 #sudo snap install android-studio --classic
 
-# Install vlc
+echo "Installing vlc media player.."
 sudo snap install vlc
-echo "Applications installation from snap store is finished..."
 
 # Install intellij ultimate
 sudo snap install intellij-idea-ultimate --classic
@@ -169,8 +169,15 @@ sudo snap install intellij-idea-ultimate --classic
 # install sublime text
 sudo snap install sublime-text --classic
 
-# install docker
+echo "installing docker.."
 sudo snap install docker
+#for post installation of docker
+echo "Creating the docker group.."
+sudo groupadd docker
+echo "Adding your user to the docker group.."
+sudo usermod -aG docker $USER
+echo "Log out and log back in so that your group membership is re-evaluated.."
+newgrp docker
 
 # install libre office
 # sudo snap install libreoffice
@@ -178,6 +185,8 @@ sudo snap install docker
 # install onlyoffice desktop editors
 # sudo snap install onlyoffice-desktopeditors
 
+echo "Applications installation from snap store is finished..."
+sleep 1
 ################ Snap store applicaitons installation ended ##########
 
 
@@ -295,6 +304,7 @@ sudo dpkg -i ttf-mscorefonts-installer_3.8_all.deb
 
 #for setting up the printer
 hp-setup
+
 
 
 ## To uninstall any packages run this command
