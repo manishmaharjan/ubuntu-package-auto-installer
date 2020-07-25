@@ -243,6 +243,9 @@ sudo ufw status verbose
 sudo ufw enable
 sudo ufw logging high
 sudo ufw status verbose
+echo "making all ufw logs visible only in ufw's own log file.."
+sudo sed -i 's/#&\sstop/\& stop/g'  /etc/rsyslog.d/20-ufw.conf
+sudo service rsyslog restart
 # END linux configurations
 
 
