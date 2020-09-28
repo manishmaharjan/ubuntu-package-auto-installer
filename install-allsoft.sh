@@ -6,6 +6,9 @@
 #Update the package index:
 # sudo apt-get update
 
+echo "Installing xclip for clipboard selector.."
+sudo apt install xclip
+
 echo "Installing devscripts for checking various repositories information and all. For example.  rmadison dolphin"
 sudo apt install devscripts
 
