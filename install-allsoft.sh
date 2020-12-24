@@ -21,6 +21,9 @@ sudo apt-get -y install default-jre
 echo "Installing gparted.."
 sudo apt-get install gparted -y
 
+echo "Ncdu is a ncurses-based du viewer that allows to browse through the directories and show percentages of disk usage. Installing ncdu.."
+sudo apt install ncdu -y
+
 #Install elementary tweaks
 #sudo apt install software-properties-common
 #sudo add-apt-repository ppa:philip.scott/elementary-tweaks
